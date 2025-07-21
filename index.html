@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Little Silly Goose Cafe - Premium coffee and delicious food in a cozy atmosphere. Visit us for signature brews, artisan bites, and sweet treats.">
+    <meta name="keywords" content="cafe, coffee, food, restaurant, premium coffee, artisan food, desserts">
+    <meta name="theme-color" content="#4F6A56">
+    <title>Little Silly Goose Cafe - Premium Coffee & Delicious Food</title>
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="resources/css/index.css" as="style">
+    <link rel="preload" href="resources/js/main.js" as="script">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap" as="style">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" as="style">
+    
+    <!-- DNS prefetch for external resources -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+    
+    <!-- Critical CSS -->
+    <link rel="stylesheet" href="resources/css/index.css">
+    
+    <!-- Font loading with display swap for better performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Load Font Awesome async -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"></noscript>
+</head>
+<body>
+    <!-- Fixed Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>Little Silly Goose Cafe 🪿 </h2>
+            </div>
+            
+            <!-- Desktop Navigation -->
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#menu" class="nav-link">Menu</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#about" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#gallery" class="nav-link">Gallery</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link">Contact</a>
+                </li>
+            </ul>
+            
+            <!-- Mobile Hamburger Menu -->
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header and Menu Wrapper -->
+    <div class="header-menu-wrapper">
+        <header class="header">
+            
+            <!-- Hero Section -->
+            <div class="hero" id="home">
+                <div class="hero-content">
+                    <h1>Welcome to Little Silly Goose Cafe</h1>
+                    <p>Where premium coffee meets delightful food in a cozy atmosphere</p>
+                    <div class="hero-buttons">
+                        <a href="#menu" class="btn btn-primary">View Menu</a>
+                        <a href="#contact" class="btn btn-secondary">Visit Us</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Menu Section -->
+        <section class="menu-section" id="menu">
+            <div class="container">
+                <h2 class="section-title">Our Menu</h2>
+                <div class="menu-grid">
+                    <div class="menu-category coffee-category">
+                        <h3><i class="fas fa-coffee"></i> Signature Brews</h3>
+                        <div class="menu-items">
+                            <div class="menu-item">
+                                <div class="item-info">
+                                    <span class="item-name">Goose's Gold Espresso</span>
+                                    <span class="item-desc">Rich, bold blend with caramel notes</span>
+                                </div>
+                                <span class="item-price">$4.50</span>
+                            </div>
+                            <div class="menu-item">
+                                <div class="item-info">
+                                    <span class="item-name">Silly Mocha Supreme</span>
+                                    <span class="item-desc">Double chocolate with whipped cream</span>
+                                </div>
+                                <span class="item-price">$5.95</span>
+                            </div>
+                            <div class="menu-item">
+                                <div class="item-info">
+                                    <span class="item-name">Cloud Nine Latte</span>
+                                    <span class="item-desc">Vanilla bean & cinnamon perfection</span>
+                                </div>
+                                <span class="item-price">$5.25</span>
+                            </div>
+                            <div class="menu-item">
+                                <div class="item-info">
+                                    <span class="item-name">Arctic Mint Cold Brew</span>
+                                    <span class="item-desc">16-hour cold brew with fresh mint</span>
+                                </div>
+                                <span class="item-price">$4.75</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-category">
+                        <h3><i class="fas fa-utensils"></i> Artisan Bites</h3>
+                        <div class="menu-items">
+                            <div class="menu-item">
+                                <div class="item-info">
+                                    <span class="item-name">Golden Sunrise Croissant</span>
+                                    <span class="item-desc">Buttery pastry with honey glaze</span>
+                                </div>
+                                <span class="item-price">$4.25</span>
+                            </div>
+                            <div class="menu-item">
+                                <div class="item-info">
+                                    <span class="item-name">Green Garden Toast</span>
+                                    <span class="item-desc">Avocado, cherry tomatoes & herb oil</span>
+                                </div>
+                                <span class="item-price">$9.50</span>
+                            </div>
+                            <div class="menu-item">
+                                <div class="item-info">
+                                    <span class="item-name">Farmer's Feast Sandwich</span>
+                                    <span class="item-desc">Free-range eggs, bacon & aged cheddar</span>
+                                </div>
+                                <span class="item-price">$8.95</span>
+                            </div>
+                            <div class="menu-item">
+                                <div class="item-info">
+                                    <span class="item-name">Mediterranean Bowl</span>
+                                    <span class="item-desc">Quinoa, feta, olives & lemon dressing</span>
+                                </div>
+                                <span class="item-price">$11.25</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-category">
+                        <h3><i class="fas fa-heart"></i> Sweet Dreams</h3>
+                        <div class="menu-items">
+                            <div class="menu-item">
+                                <div class="item-info">
+                                    <span class="item-name">Decadent Fudge Tower</span>
+                                    <span class="item-desc">Triple chocolate with raspberry drizzle</span>
+                                </div>
+                                <span class="item-price">$6.95</span>
+                            </div>
+                            <div class="menu-item">
+                                <div class="item-info">
+                                    <span class="item-name">Velvet Cheesecake</span>
+                                    <span class="item-desc">New York style with berry compote</span>
+                                </div>
+                                <span class="item-price">$7.75</span>
+                            </div>
+                            <div class="menu-item">
+                                <div class="item-info">
+                                    <span class="item-name">French Macaron Trio</span>
+                                    <span class="item-desc">Vanilla, chocolate & strawberry</span>
+                                </div>
+                                <span class="item-price">$8.50</span>
+                            </div>
+                            <div class="menu-item">
+                                <div class="item-info">
+                                    <span class="item-name">Cloud Tiramisu</span>
+                                    <span class="item-desc">Light mascarpone with coffee dust</span>
+                                </div>
+                                <span class="item-price">$7.25</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-category">
+                        <h3><i class="fas fa-glass-cheers"></i> Refreshing Delights</h3>
+                        <div class="menu-items">
+                            <div class="menu-item">
+                                <div class="item-info">
+                                    <span class="item-name">Tropical Paradise Smoothie</span>
+                                    <span class="item-desc">Mango, pineapple & coconut milk</span>
+                                </div>
+                                <span class="item-price">$6.95</span>
+                            </div>
+                            <div class="menu-item">
+                                <div class="item-info">
+                                    <span class="item-name">Green Goddess Blend</span>
+                                    <span class="item-desc">Spinach, apple, ginger & lime</span>
+                                </div>
+                                <span class="item-price">$7.25</span>
+                            </div>
+                            <div class="menu-item">
+                                <div class="item-info">
+                                    <span class="item-name">Himalayan Iced Tea</span>
+                                    <span class="item-desc">Premium black tea with herbs</span>
+                                </div>
+                                <span class="item-price">$4.25</span>
+                            </div>
+                            <div class="menu-item">
+                                <div class="item-info">
+                                    <span class="item-name">Sparkling Citrus Fusion</span>
+                                    <span class="item-desc">Fresh lemon, lime & mint soda</span>
+                                </div>
+                                <span class="item-price">$4.75</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <main>
+        <!-- About Section -->
+        <section class="about-section" id="about">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-text">
+                        <h2>About Little Silly Goose Cafe</h2>
+                        <p>Since our opening, Little Silly Goose Cafe has been a beloved gathering place for coffee enthusiasts and food lovers alike. We pride ourselves on serving ethically sourced, freshly roasted coffee alongside carefully crafted food made from the finest local ingredients.</p>
+                        <p>Our cozy atmosphere and friendly staff create the perfect environment whether you're catching up with friends, working on your laptop, or simply enjoying a quiet moment with a perfect cup of coffee.</p>
+                        <div class="features">
+                            <div class="feature">
+                                <i class="fas fa-leaf"></i>
+                                <span>Organic Ingredients</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-heart"></i>
+                                <span>Made with Love</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-clock"></i>
+                                <span>Fresh Daily</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery and Contact Wrapper -->
+        <div class="gradient-wrapper">
+            <!-- Gallery Section -->
+            <section class="gallery-section" id="gallery">
+                <div class="gallery-container">
+                    <h2 class="section-title">Gallery</h2>
+                    <div class="gallery-grid">
+                        <div class="gallery-item" data-category="interior">
+                            <img class="gallery-image" src="resources/css/images/burger.jpg" alt="Delicious Burger" loading="lazy">
+                            <div class="gallery-overlay">
+                                <div class="gallery-title">Chef's Gallery</div>
+                                <div class="gallery-description">Take a look at our chef's amazing work!</div>
+                            </div>
+                        </div>
+                        <div class="gallery-item" data-category="dessert">
+                            <img class="gallery-image" src="resources/css/images/doughnut.jpg" alt="Delicious Doughnut" loading="lazy">
+                            <div class="gallery-overlay">
+                                <div class="gallery-title">Dessert Display</div>
+                                <div class="gallery-description">Dessert goes to the heart, not the stomach!</div>
+                            </div>
+                        </div>
+                        <div class="gallery-item" data-category="coffee">
+                            <img class="gallery-image" src="resources/css/images/iced.jpg" alt="Iced Coffee" loading="lazy">
+                            <div class="gallery-overlay">
+                                <div class="gallery-title">Caffeine Fix</div>
+                                <div class="gallery-description">A perfect blend to kickstart your day!</div>
+                            </div>
+                        </div>
+                        <div class="gallery-item" data-category="milkshakes">
+                            <img class="gallery-image" src="resources/css/images/chocmilk.jpg" alt="Chocolate Milkshake" loading="lazy">
+                            <div class="gallery-overlay">
+                                <div class="gallery-title">Milkshake Madness</div>
+                                <div class="gallery-description">Milkshakes that bring all the boys to the yard!</div>
+                            </div>
+                        </div>
+                        <div class="gallery-item" data-category="party">
+                            <img class="gallery-image" src="resources/css/images/birthdayhats.jpg" alt="Birthday Party" loading="lazy">
+                            <div class="gallery-overlay">
+                                <div class="gallery-title">Party, Play, Repeat!</div>
+                                <div class="gallery-description">Take a look at the parties we host!</div>
+                            </div>
+                        </div>
+                        <div class="gallery-item" data-category="drinks">
+                            <img class="gallery-image" src="resources/css/images/eventplan.jpg" alt="Event Planning" loading="lazy">
+                            <div class="gallery-overlay">
+                                <div class="gallery-title">Kiddies Events</div>
+                                <div class="gallery-description">We host an array of kids activities, take a look!</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Gallery Modal -->
+            <div id="galleryModal" class="gallery-modal">
+                <div class="modal-content">
+                    <span class="close-modal">&times;</span>
+                    <div class="modal-header">
+                        <h3 id="modalTitle">Gallery</h3>
+                        <div class="modal-nav">
+                            <button id="prevImage" class="nav-btn"><i class="fas fa-chevron-left"></i></button>
+                            <span id="imageCounter">1 / 1</span>
+                            <button id="nextImage" class="nav-btn"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <img id="modalImage" src="" alt="">
+                        <div id="modalDescription"></div>
+                    </div>
+                    <div class="modal-thumbnails" id="modalThumbnails">
+                        <!-- Thumbnails will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Section -->
+            <section class="contact-section" id="contact">
+                <div class="container">
+                    <h2 class="section-title">Visit Us</h2>
+                    <div class="contact-content">
+                        <div class="contact-info">
+                            <div class="contact-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div>
+                                    <h4>Location</h4>
+                                    <p>123 Coffee Street, Downtown<br>Your City, State 12345</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-phone"></i>
+                                <div>
+                                    <h4>Phone</h4>
+                                    <p>(555) 123-4567</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-clock"></i>
+                                <div>
+                                    <h4>Hours</h4>
+                                    <p>Mon-Fri: 7:00 AM - 8:00 PM<br>
+                                       Sat-Sun: 8:00 AM - 9:00 PM</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>Little Silly Goose Cafe 🪿</h3>
+                    <p>Your neighborhood coffee destination</p>
+                </div>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 SoftFlair Studio. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- External JavaScript -->
+    <script src="resources/js/main.js" defer></script>
+</body>
+</html>
