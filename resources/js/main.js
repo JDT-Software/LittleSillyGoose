@@ -112,7 +112,13 @@ const galleryData = {
         { src: 'resources/css/images/burger.jpg', title: 'Delicious Burger', description: 'Our signature beef burger with fresh ingredients' },
         { src: 'resources/css/images/pasta.jpg', title: 'Fresh Pasta', description: 'Homemade pasta with authentic Italian flavors' },
         { src: 'resources/css/images/pizza.jpg', title: 'Wood-Fired Pizza', description: 'Crispy crust pizza baked to perfection' },
-        { src: 'resources/css/images/macncheese.jpg', title: 'Creamy Mac & Cheese', description: 'Comfort food at its finest with rich cheese sauce' }
+        { src: 'resources/css/images/macncheese.jpg', title: 'Creamy Mac & Cheese', description: 'Comfort food at its finest with rich cheese sauce' },
+        { src: 'resources/css/images/frenchtoast.jpg', title: 'French Toast Delight', description: 'Golden French toast with maple syrup and fresh berries' },
+        { src: 'resources/css/images/chickenwrap.jpg', title: 'Chicken Wrap', description: 'Grilled chicken wrap with fresh vegetables and sauce' },
+        { src: 'resources/css/images/salad.jpg', title: 'Fresh Garden Salad', description: 'Crisp lettuce with seasonal vegetables and dressing' },
+        { src: 'resources/css/images/toasty.jpg', title: 'Grilled Toasty', description: 'Perfectly toasted sandwich with melted cheese' },
+        { src: 'resources/css/images/meusli.jpg', title: 'Healthy Muesli Bowl', description: 'Nutritious muesli with fresh fruits and yogurt' },
+        { src: 'resources/css/images/wings.jpg', title: 'Crispy Chicken Wings', description: 'Perfectly seasoned wings with your choice of sauce' }
     ],
     party: [
         { src: 'resources/css/images/birthdayhats.jpg', title: 'Birthday Party Fun', description: 'Colorful birthday celebrations with festive party hats' },
@@ -124,19 +130,22 @@ const galleryData = {
         { src: 'resources/css/images/doughnut.jpg', title: 'Glazed Doughnut', description: 'Freshly glazed doughnut with perfect sweetness' },
         { src: 'resources/css/images/cake.jpg', title: 'Decadent Cake', description: 'Rich layered cake perfect for any celebration' },
         { src: 'resources/css/images/cupcakes.jpg', title: 'Gourmet Cupcakes', description: 'Delightfully decorated cupcakes in various flavors' },
-        { src: 'resources/css/images/strawberry.jpg', title: 'Fresh Strawberry Treats', description: 'Sweet strawberry desserts made with fresh berries' }
+        { src: 'resources/css/images/strawberry.jpg', title: 'Fresh Strawberry Treats', description: 'Sweet strawberry desserts made with fresh berries' },
+        { src: 'resources/css/images/cookie.jpg', title: 'Homemade Cookies', description: 'Fresh baked cookies with love and premium ingredients' }
     ],
     milkshakes: [
         { src: 'resources/css/images/chocmilk.jpg', title: 'Chocolate Milkshake', description: 'Rich and creamy chocolate milkshake topped with whipped cream' },
         { src: 'resources/css/images/caramilk.jpg', title: 'Caramel Milkshake', description: 'Smooth caramel milkshake with sweet caramel drizzle' },
         { src: 'resources/css/images/kkmilk.jpg', title: 'Cookies & Cream Milkshake', description: 'Delicious milkshake blended with crushed cookies' },
-        { src: 'resources/css/images/sprinklemilk.jpg', title: 'Rainbow Sprinkle Milkshake', description: 'Fun and colorful milkshake topped with rainbow sprinkles' }
+        { src: 'resources/css/images/sprinklemilk.jpg', title: 'Rainbow Sprinkle Milkshake', description: 'Fun and colorful milkshake topped with rainbow sprinkles' },
+        { src: 'resources/css/images/aimilk.jpg', title: 'AI Special Milkshake', description: 'Our signature specialty milkshake with unique flavors' }
     ],
     coffee: [
         { src: 'resources/css/images/iced.jpg', title: 'Refreshing Iced Coffee', description: 'Cool and invigorating iced coffee perfect for any time of day' },
         { src: 'resources/css/images/coffee.jpg', title: 'Classic Hot Coffee', description: 'Rich and aromatic hot coffee brewed to perfection' },
         { src: 'resources/css/images/coffeecan.jpg', title: 'Specialty Coffee Blend', description: 'Our signature coffee blend with unique flavor notes' },
-        { src: 'resources/css/images/foambrew.jpg', title: 'Artisan Foam Brew', description: 'Expertly crafted coffee with beautiful foam art' }
+        { src: 'resources/css/images/foambrew.jpg', title: 'Artisan Foam Brew', description: 'Expertly crafted coffee with beautiful foam art' },
+        { src: 'resources/css/images/aiicecoffee.jpg', title: 'AI Iced Coffee Special', description: 'Our premium iced coffee with a special twist' }
     ],
     drinks: [
         { src: 'resources/css/images/eventplan.jpg', title: 'Event Planning', description: 'Professional event planning for all your special occasions' },
@@ -307,3 +316,52 @@ document.addEventListener('keydown', (e) => {
         }
     }
 });
+
+// Touch/Swipe functionality for mobile devices
+let touchStartX = 0;
+let touchEndX = 0;
+let touchStartY = 0;
+let touchEndY = 0;
+const minSwipeDistance = 50; // Minimum distance for a swipe to be detected
+
+// Handle touch start
+modal.addEventListener('touchstart', (e) => {
+    if (modal.style.display === 'block') {
+        touchStartX = e.changedTouches[0].screenX;
+        touchStartY = e.changedTouches[0].screenY;
+    }
+}, { passive: true });
+
+// Handle touch end and determine swipe direction
+modal.addEventListener('touchend', (e) => {
+    if (modal.style.display === 'block') {
+        touchEndX = e.changedTouches[0].screenX;
+        touchEndY = e.changedTouches[0].screenY;
+        handleSwipeGesture();
+    }
+}, { passive: true });
+
+/**
+ * Handles swipe gestures for modal navigation
+ */
+function handleSwipeGesture() {
+    const horizontalDistance = touchEndX - touchStartX;
+    const verticalDistance = Math.abs(touchEndY - touchStartY);
+    
+    // Only process horizontal swipes (ignore vertical scrolling)
+    if (Math.abs(horizontalDistance) > minSwipeDistance && Math.abs(horizontalDistance) > verticalDistance) {
+        if (horizontalDistance > 0) {
+            // Swiped right - go to previous image
+            if (currentImageIndex > 0) {
+                currentImageIndex--;
+                updateModalContent();
+            }
+        } else {
+            // Swiped left - go to next image
+            if (currentImageIndex < currentGallery.length - 1) {
+                currentImageIndex++;
+                updateModalContent();
+            }
+        }
+    }
+}
