@@ -1,14 +1,20 @@
-/* Reset and Base Styles */
+/* Reset and Base Styles with Performance Optimizations */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Critical CSS - Above the fold styles */
 body {
     font-family: 'Poppins', sans-serif;
     line-height: 1.6;
     color: #F7F7F2;
+    /* Optimize font rendering */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* Optimize text rendering */
+    text-rendering: optimizeLegibility;
 }
 
 /* Caveat font for headings and special elements */
@@ -63,6 +69,9 @@ p {
     background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20"><defs><radialGradient id="a" cx="50%" cy="0%" r="100%"><stop offset="0%" stop-color="%23FFF" stop-opacity="0.15"/><stop offset="100%" stop-color="%23FFF" stop-opacity="0"/></radialGradient></defs><circle cx="10" cy="10" r="8" fill="url(%23a)"/><circle cx="25" cy="15" r="6" fill="url(%23a)"/><circle cx="40" cy="8" r="7" fill="url(%23a)"/><circle cx="55" cy="12" r="5" fill="url(%23a)"/><circle cx="70" cy="6" r="9" fill="url(%23a)"/><circle cx="85" cy="14" r="4" fill="url(%23a)"/></svg>') repeat;
     opacity: 0.4;
     animation: float 20s ease-in-out infinite;
+    /* Hardware acceleration for better performance */
+    transform: translateZ(0);
+    will-change: transform;
 }
 
 /* Add additional glass effect overlay */
@@ -84,8 +93,12 @@ p {
 }
 
 @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-20px); }
+    0%, 100% { 
+        transform: translateY(0px) translateZ(0); 
+    }
+    50% { 
+        transform: translateY(-20px) translateZ(0); 
+    }
 }
 
 .navbar {

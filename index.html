@@ -6,6 +6,10 @@
     <meta name="description" content="Little Silly Goose Cafe - Premium coffee and delicious food in a cozy atmosphere. Visit us for signature brews, artisan bites, and sweet treats.">
     <meta name="keywords" content="cafe, coffee, food, restaurant, premium coffee, artisan food, desserts">
     <meta name="theme-color" content="#4F6A56">
+    <!-- Performance optimization meta tags -->
+    <meta http-equiv="Cache-Control" content="public, max-age=31536000">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://jdt-software.github.io/LittleSillyGoose/">
     <title>Little Silly Goose Cafe - Premium Coffee & Delicious Food</title>
     
     <!-- Preload critical resources -->
@@ -19,7 +23,7 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
     
-    <!-- Critical CSS -->
+    <!-- Critical CSS with immediate load -->
     <link rel="stylesheet" href="resources/css/index.css">
     
     <!-- Font loading with display swap for better performance -->
@@ -28,8 +32,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     
-    <!-- Load Font Awesome async -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" media="print" onload="this.media='all'">
+    <!-- Load Font Awesome with optimized loading -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"></noscript>
 </head>
 <body>

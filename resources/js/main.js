@@ -3,7 +3,7 @@
  * Handles navigation, animations, gallery modal, and interactive features
  */
 
-// Performance optimizations
+// Performance optimizations with enhanced debouncing
 const debounce = (func, wait) => {
     let timeout;
     return function executedFunction(...args) {
@@ -14,6 +14,20 @@ const debounce = (func, wait) => {
         clearTimeout(timeout);
         timeout = setTimeout(later, wait);
     };
+};
+
+// Enhanced throttle function for better performance
+const throttle = (func, limit) => {
+    let inThrottle;
+    return function() {
+        const args = arguments;
+        const context = this;
+        if (!inThrottle) {
+            func.apply(context, args);
+            inThrottle = true;
+            setTimeout(() => inThrottle = false, limit);
+        }
+    }
 };
 
 // Mobile Menu Toggle
@@ -45,65 +59,83 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Optimized Intersection Observer for scroll-triggered animations
+// Enhanced Intersection Observer for scroll-triggered animations
 const observerOptions = {
-    threshold: 0.1,
+    threshold: [0.1],
     rootMargin: '0px 0px -50px 0px'
 };
 
 const animateOnScroll = (entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            const target = entry.target;
-            
-            // Handle menu section animations
-            if (target.classList.contains('menu-section')) {
-                const menuCategories = target.querySelectorAll('.menu-category');
-                const menuItems = target.querySelectorAll('.menu-item');
+    // Use requestIdleCallback for better performance when available
+    const performAnimation = () => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const target = entry.target;
                 
-                // Use requestAnimationFrame for better performance
-                requestAnimationFrame(() => {
-                    menuCategories.forEach((category, index) => {
-                        setTimeout(() => {
-                            category.classList.add('animate');
-                        }, index * 200);
-                    });
+                // Handle menu section animations with optimized timing
+                if (target.classList.contains('menu-section')) {
+                    const menuCategories = target.querySelectorAll('.menu-category');
+                    const menuItems = target.querySelectorAll('.menu-item');
                     
-                    setTimeout(() => {
-                        menuItems.forEach(item => {
-                            item.classList.add('animate');
+                    // Use requestAnimationFrame for better performance
+                    requestAnimationFrame(() => {
+                        menuCategories.forEach((category, index) => {
+                            setTimeout(() => {
+                                category.classList.add('animate');
+                            }, index * 150); // Reduced timing for faster animation
                         });
-                    }, 800);
-                });
-            }
-            
-            // Handle gallery section animations
-            if (target.classList.contains('gallery-section')) {
-                const galleryItems = target.querySelectorAll('.gallery-item');
-                requestAnimationFrame(() => {
-                    galleryItems.forEach((item, index) => {
+                        
                         setTimeout(() => {
-                            item.classList.add('animate');
-                        }, index * 100);
+                            menuItems.forEach((item, index) => {
+                                setTimeout(() => {
+                                    item.classList.add('animate');
+                                }, index * 50); // Staggered animation for better UX
+                            });
+                        }, 600); // Reduced delay
                     });
-                });
+                }
+                
+                // Handle gallery section animations with optimized timing
+                if (target.classList.contains('gallery-section')) {
+                    const galleryItems = target.querySelectorAll('.gallery-item');
+                    requestAnimationFrame(() => {
+                        galleryItems.forEach((item, index) => {
+                            setTimeout(() => {
+                                item.classList.add('animate');
+                            }, index * 80); // Optimized timing
+                        });
+                    });
+                }
+                
+                // Stop observing after animation is triggered
+                observer.unobserve(target);
             }
-            
-            // Stop observing after animation is triggered
-            observer.unobserve(target);
-        }
-    });
+        });
+    };
+
+    // Use requestIdleCallback when available, fallback to requestAnimationFrame
+    if (window.requestIdleCallback) {
+        requestIdleCallback(performAnimation);
+    } else {
+        requestAnimationFrame(performAnimation);
+    }
 };
 
 const observer = new IntersectionObserver(animateOnScroll, observerOptions);
 
-// Observe sections for animations
+// Enhanced DOM content loaded with performance optimizations
 document.addEventListener('DOMContentLoaded', () => {
+    // Use document fragment for better performance
+    const fragment = document.createDocumentFragment();
+    
     const menuSection = document.querySelector('.menu-section');
     const gallerySection = document.querySelector('.gallery-section');
     
-    if (menuSection) observer.observe(menuSection);
-    if (gallerySection) observer.observe(gallerySection);
+    // Batch DOM operations
+    requestAnimationFrame(() => {
+        if (menuSection) observer.observe(menuSection);
+        if (gallerySection) observer.observe(gallerySection);
+    });
 });
 
 // Gallery Modal Functionality with optimized data structure
@@ -230,24 +262,33 @@ function updateModalContent() {
 }
 
 /**
- * Creates thumbnail images for the current gallery
+ * Creates thumbnail images for the current gallery with performance optimization
  */
 function createThumbnails() {
-    thumbnailsContainer.innerHTML = '';
+    // Clear thumbnails efficiently
+    thumbnailsContainer.textContent = '';
+    
+    // Use document fragment for batch DOM operations
+    const fragment = document.createDocumentFragment();
     
     currentGallery.forEach((image, index) => {
         const thumbnail = document.createElement('img');
         thumbnail.src = image.src;
         thumbnail.alt = image.title;
         thumbnail.className = 'thumbnail';
-        thumbnail.addEventListener('click', () => {
+        thumbnail.loading = 'lazy'; // Add lazy loading for better performance
+        
+        // Optimize event listener with throttling
+        thumbnail.addEventListener('click', throttle(() => {
             currentImageIndex = index;
             updateModalContent();
-        });
+        }, 100));
         
-        thumbnailsContainer.appendChild(thumbnail);
+        fragment.appendChild(thumbnail);
     });
     
+    // Single DOM operation for better performance
+    thumbnailsContainer.appendChild(fragment);
     updateThumbnailsActive();
 }
 
